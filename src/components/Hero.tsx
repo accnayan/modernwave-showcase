@@ -1,8 +1,10 @@
+
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Code2, Boxes, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { SparklesCore } from "@/components/ui/sparkles";
 
 const technologies = [
   "HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS", "TypeScript", "Node.js"
@@ -28,8 +30,21 @@ const features = [
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20">
-      <div className="section-padding">
+    <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+      <div className="absolute inset-0 w-full h-full">
+        <SparklesCore
+          id="tsparticlesfullpage"
+          background="transparent"
+          minSize={0.6}
+          maxSize={1.4}
+          particleDensity={100}
+          className="w-full h-full"
+          particleColor="rgba(255, 255, 255, 0.3)"
+          speed={1}
+        />
+      </div>
+      
+      <div className="section-padding relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -82,10 +97,11 @@ const Hero = () => {
               transition={{ delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <Button size="lg" asChild>
+              <Button size="lg" asChild className="relative overflow-hidden group">
                 <Link to="/projects">
-                  View My Work
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <span className="relative z-10">View My Work</span>
+                  <ArrowRight className="ml-2 h-4 w-4 relative z-10" />
+                  <div className="absolute inset-0 bg-primary-foreground opacity-0 group-hover:opacity-10 transition-opacity" />
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
@@ -106,7 +122,7 @@ const Hero = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.7 + index * 0.1 }}
-                    className="px-4 py-2 rounded-full bg-secondary text-sm font-medium hover:bg-primary/10 transition-colors"
+                    className="px-4 py-2 rounded-full bg-secondary/50 backdrop-blur-sm text-sm font-medium hover:bg-primary/10 transition-colors"
                   >
                     {tech}
                   </motion.span>
