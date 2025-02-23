@@ -1,5 +1,6 @@
 
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -27,13 +28,13 @@ const Hero = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button size="lg" asChild>
-                <a href="#projects">
+                <Link to="/projects">
                   View My Work
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
+                </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="#contact">Get in Touch</a>
+                <Link to="/contact">Get in Touch</Link>
               </Button>
             </div>
           </motion.div>

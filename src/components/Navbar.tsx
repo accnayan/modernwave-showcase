@@ -1,15 +1,16 @@
 
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <a
-    href={href}
+const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) => (
+  <Link
+    to={to}
     className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
   >
     {children}
-  </a>
+  </Link>
 );
 
 const Navbar = () => {
@@ -33,15 +34,15 @@ const Navbar = () => {
     >
       <div className="section-padding">
         <div className="flex items-center justify-between">
-          <a href="#" className="text-xl font-bold text-primary">
+          <Link to="/" className="text-xl font-bold text-primary">
             Nayan Boro
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <NavLink href="#home">Home</NavLink>
-            <NavLink href="#projects">Projects</NavLink>
-            <NavLink href="#contact">Contact</NavLink>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/projects">Projects</NavLink>
+            <NavLink to="/contact">Contact</NavLink>
           </div>
 
           {/* Mobile Menu Button */}
@@ -62,27 +63,27 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden absolute top-full left-0 w-full glass-effect animate-fade-in">
             <div className="py-4 space-y-4 px-4">
-              <a
-                href="#home"
+              <Link
+                to="/"
                 className="block text-sm font-medium text-muted-foreground hover:text-primary"
                 onClick={() => setIsOpen(false)}
               >
                 Home
-              </a>
-              <a
-                href="#projects"
+              </Link>
+              <Link
+                to="/projects"
                 className="block text-sm font-medium text-muted-foreground hover:text-primary"
                 onClick={() => setIsOpen(false)}
               >
                 Projects
-              </a>
-              <a
-                href="#contact"
+              </Link>
+              <Link
+                to="/contact"
                 className="block text-sm font-medium text-muted-foreground hover:text-primary"
                 onClick={() => setIsOpen(false)}
               >
                 Contact
-              </a>
+              </Link>
             </div>
           </div>
         )}
