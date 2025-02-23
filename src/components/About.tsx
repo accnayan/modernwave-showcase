@@ -1,6 +1,6 @@
-
 import { motion } from "framer-motion";
 import { Code, Globe, Server, Sparkles } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const skills = [
   {
@@ -36,6 +36,21 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="mb-8 relative"
+          >
+            <div className="w-32 h-32 md:w-40 md:h-40 mx-auto relative">
+              <Avatar className="w-full h-full border-4 border-primary">
+                <AvatarImage src="/placeholder.svg" alt="Nayan Boro" className="object-cover" />
+                <AvatarFallback>NB</AvatarFallback>
+              </Avatar>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/10 to-transparent -z-10 blur-lg" />
+            </div>
+          </motion.div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             I'm a passionate Full-Stack Developer with expertise in modern web technologies.

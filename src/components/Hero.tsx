@@ -1,8 +1,8 @@
-
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Code2, Boxes, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const technologies = [
   "HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS", "TypeScript", "Node.js"
@@ -37,6 +37,18 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
             className="text-center lg:text-left"
           >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="mb-6 flex justify-center lg:justify-start"
+            >
+              <Avatar className="h-24 w-24 border-2 border-primary">
+                <AvatarImage src="/placeholder.svg" alt="Nayan Boro" />
+                <AvatarFallback>NB</AvatarFallback>
+              </Avatar>
+            </motion.div>
+
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -63,6 +75,7 @@ const Hero = () => {
               I craft beautiful, high-performance web applications using modern technologies
               and best practices.
             </motion.p>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -80,7 +93,6 @@ const Hero = () => {
               </Button>
             </motion.div>
 
-            {/* Technologies */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -103,7 +115,6 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Features Grid */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
