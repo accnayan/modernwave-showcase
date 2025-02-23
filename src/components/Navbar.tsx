@@ -25,6 +25,14 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsOpen(false);
+  };
+
   return (
     <nav
       className={cn(
@@ -40,7 +48,18 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <NavLink to="/">Home</NavLink>
+            <button
+              onClick={() => scrollToSection('home')}
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+            >
+              Home
+            </button>
+            <button
+              onClick={() => scrollToSection('about')}
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+            >
+              About
+            </button>
             <NavLink to="/projects">Projects</NavLink>
             <NavLink to="/contact">Contact</NavLink>
           </div>
@@ -63,13 +82,18 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden absolute top-full left-0 w-full glass-effect animate-fade-in">
             <div className="py-4 space-y-4 px-4">
-              <Link
-                to="/"
-                className="block text-sm font-medium text-muted-foreground hover:text-primary"
-                onClick={() => setIsOpen(false)}
+              <button
+                onClick={() => scrollToSection('home')}
+                className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-primary"
               >
                 Home
-              </Link>
+              </button>
+              <button
+                onClick={() => scrollToSection('about')}
+                className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-primary"
+              >
+                About
+              </button>
               <Link
                 to="/projects"
                 className="block text-sm font-medium text-muted-foreground hover:text-primary"
